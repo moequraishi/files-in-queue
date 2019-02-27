@@ -1,0 +1,29 @@
+<div class="">
+  <h4>Files Being Used:</h4>
+  <p>(updated in realtime)</p>
+</div>
+<div class="row">
+  <div class="col-md-4" *ngFor="let b of rtData">
+    <div class="data-container">
+
+      <div class="data-wrapper">
+        <h4>
+          {{b.name}}
+        </h4>
+
+        <div *ngIf="b.queue">
+          <ol>
+            <li *ngFor="let x of b.queue">{{x}}</li>
+          </ol>
+        </div>
+
+        <p>
+          <strong>Updated at: </strong>{{b.updatedAt | date: 'medium' : 'PST'}}
+        </p>
+
+        <hr>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="row" *ngIf="allData">
+  <div class="col-md-4" *ngFor="let x of allData">
+    <div class="data-container">
+      <h4>Update files:</h4>
+      <hr>
+
+      <div class="mongo-data">
+
+        <div class="data-wrapper" id="{{x._id}}">
+          <div>
+            <label for="name">Name</label>
+            <input #nameInput id="name" class="form-control" type="text" [value]="x.name">
+          </div>
+
+          <br>
+
+          <div>
+            <label for="queue">Files: (separate by comma and space)</label>
+            <input #queueInput id="queue" class="form-control" type="text" [value]="x.queue">
+          </div>
+
+          <br>
+
+          <p>
+            <strong>Created at: </strong>{{x.createdAt | date: 'medium' : 'PST'}}
+          </p>
+
+          <p>
+            <strong>Updated at: </strong>{{x.updatedAt | date: 'medium' : 'PST'}}
+          </p>
+
+          <button (click)="updateUser(x._id)" class="btn btn-success update-btn">Update</button>
+          <button (click)="deleteData(x._id)" class="btn btn-danger">Delete</button>
+        </div>
+
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>

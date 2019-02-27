@@ -1,0 +1,23 @@
+.data-container {
+  max-width: 325px;
+  display: block;
+  background: #efefef;
+  padding: 20px;
+  border: 1px solid #000;
+}
+.mongo-data {
+  margin-bottom: 20px;
+}
+.update {
+  color: #0075c9;
+  cursor: pointer;
+}
+.hide {
+  display: none;
+}
+.update-btn {
+  margin-bottom: 10px;
+}
+.btn-danger, .update-btn {
+  width: 100%;
+}
