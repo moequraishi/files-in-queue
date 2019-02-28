@@ -1,7 +1,17 @@
 button.btn-primary,
-button.btn-success{
+button.btn-success,
+button.btn-warning{
   display: inline-block;
   margin: 0 20px 20px 0;
+  @media screen and (max-width: 768px) {
+    display: block;
+    margin: 0 0 10px;
+    width: 100%;
+  }
+}
+.btn-warning {
+  color: #fff;
+  background: #ff9007;
 }
 h1 {
   cursor: pointer;
@@ -22,7 +32,7 @@ h1 {
 }
 
 .btn-container {
-  max-width: 325px;
+  max-width: 420px;
   display: block;
   margin: 0 auto;
 }

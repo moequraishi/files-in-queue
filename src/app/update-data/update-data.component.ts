@@ -11,7 +11,9 @@ export class UpdateDataComponent implements OnInit {
   @ViewChild('nameInput') nameInputRef: ElementRef;
   @ViewChild('queueInput') queueInputRef: ElementRef;
   update = false;
+  updateArray = [];
   allData;
+  userName;
 
   constructor(private httpService: HttpService, private route: Router) { }
 
@@ -27,13 +29,13 @@ export class UpdateDataComponent implements OnInit {
   }
 
 
-  updateUser(id) {
-    const queueItems = this.queueInputRef.nativeElement.value;
-    console.log(queueItems);
+  updateUser(id, event) {
+    const name = event.path[2].childNodes[1].firstChild.value;
+    const queue = event.path[2].childNodes[1].childNodes[3].value.toString().split(', ');
 
     const data = {
-      name: this.nameInputRef.nativeElement.value,
-      queue: queueItems,
+      name: name,
+      queue: queue,
       updatedAt: new Date()
     };
 

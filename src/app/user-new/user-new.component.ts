@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class UserNewComponent implements OnInit {
   name: string;
   queue: string;
+  queueArray = [];
 
   constructor(private httpService: HttpService, private router: Router, private zone: NgZone) { }
 
@@ -18,9 +19,17 @@ export class UserNewComponent implements OnInit {
   }
 
   newData(form: NgForm) {
+    const splitQueue = this.queue.split(',');
+
+    if (splitQueue) {
+      for (const file of splitQueue) {
+        this.queueArray.push(file);
+      }
+    }
+
     const sendData = {
       name: this.name,
-      queue: this.queue.split(',')
+      queue: this.queueArray
     };
 
     const observable = this.httpService.createData(sendData);

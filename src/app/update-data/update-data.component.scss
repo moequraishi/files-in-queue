@@ -1,8 +1,22 @@
 .data-container {
   max-width: 325px;
   display: block;
-  margin: 0 auto 20px;
-  background: #efefef;
+  margin: 0 0 20px 0;
+  background: #ffffff;
   padding: 20px;
   border: 1px solid #000;
+}
+button.btn-primary,
+button.btn-success,
+button.btn-danger{
+  display: inline-block;
+  margin: 0 20px 0 0;
+  @media screen and (max-width: 768px) {
+    display: block;
+    margin: 0 0 10px;
+    width: 100%;
+  }
+}
+.queue-card {
+  margin-bottom: 15px;
 }

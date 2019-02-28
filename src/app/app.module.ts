@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
+import { AllMaterialsModule } from './material-module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
@@ -29,6 +32,8 @@ const config: SocketIoConfig = { url: 'http://localhost:1337', options: {} };
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    AllMaterialsModule,
+    BrowserAnimationsModule,
     SocketIoModule.forRoot(config)
   ],
   providers: [HttpService, WebsocketService],

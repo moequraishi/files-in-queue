@@ -4,13 +4,13 @@
 </div>
 <div class="row">
   <div class="col-md-4" *ngFor="let b of rtData">
-    <div class="data-container">
-
-      <div class="data-wrapper">
-        <h4>
-          {{b.name}}
-        </h4>
-
+    <mat-card class="queue-card">
+      <mat-card-header>
+        <mat-card-title>{{b.name}}</mat-card-title>
+        <!--<mat-card-subtitle>Dog Breed</mat-card-subtitle>-->
+      </mat-card-header>
+      <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+      <mat-card-content>
         <div *ngIf="b.queue">
           <ol>
             <li *ngFor="let x of b.queue">{{x}}</li>
@@ -18,12 +18,13 @@
         </div>
 
         <p>
-          <strong>Updated at: </strong>{{b.updatedAt | date: 'medium' : 'PST'}}
+          <strong>Updated on: </strong>{{b.updatedAt | date: 'medium' : 'PST'}}
         </p>
-
-        <hr>
-      </div>
-
-    </div>
+      </mat-card-content>
+      <!--<mat-card-actions>-->
+        <!--<button mat-button>LIKE</button>-->
+        <!--<button mat-button>SHARE</button>-->
+      <!--</mat-card-actions>-->
+    </mat-card>
   </div>
 </div>
