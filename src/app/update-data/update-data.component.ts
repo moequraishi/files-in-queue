@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { Router } from '@angular/router';
-import {HttpService} from '../http.service';
+import { HttpService } from '../http.service';
+import {MatChipInputEvent} from '@angular/material';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-update-data',
@@ -13,7 +15,6 @@ export class UpdateDataComponent implements OnInit {
   update = false;
   updateArray = [];
   allData;
-  userName;
 
   constructor(private httpService: HttpService, private route: Router) { }
 
@@ -32,10 +33,19 @@ export class UpdateDataComponent implements OnInit {
   updateUser(id, event) {
     const name = event.path[2].childNodes[1].firstChild.value;
     const queue = event.path[2].childNodes[1].childNodes[3].value.toString().split(', ');
+    const tempQue = [];
+
+    console.log(this.updateArray);
+
+    for (let i = 0; i < this.updateArray.length; i++) {
+      tempQue.push(this.updateArray[i].name);
+    }
+
+    console.log(tempQue);
 
     const data = {
       name: name,
-      queue: queue,
+      queue: tempQue,
       updatedAt: new Date()
     };
 

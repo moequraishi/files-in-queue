@@ -5,6 +5,7 @@ const express = require('express'),
 routes.post('/new', controller.create);
 routes.get('/all', controller.read);
 routes.get('/users', controller.readTest);
+routes.get('/users/:id', controller.findById);
 routes.post('/update/:id', controller.update);
 routes.post('/delete/:id', controller.destroy);
 

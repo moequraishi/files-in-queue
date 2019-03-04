@@ -26,6 +26,18 @@ const read = (req, res) => {
   });
 };
 
+// Read - Find by ID
+const findById = (req, res) => {
+  User.findOne({_id: req.params.id},function (err, data) {
+    if (err) {
+      console.log('Error getting the data: ', err)
+    }
+    if (data) {
+      res.status(200).json(data)
+    }
+  });
+};
+
 // Read - Test JSON Data
 const readTest = (req, res) => {
   res.status(200).json({ message: 'Changed!' });
@@ -65,6 +77,7 @@ const destroy = (req, res) => {
 module.exports = {
   create,
   read,
+  findById,
   readTest,
   update,
   destroy
