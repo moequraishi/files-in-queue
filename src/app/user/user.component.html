@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-12">
+    <h4>Update Queue:</h4>
+  </div>
+</div>
+
+<div class="row" *ngIf="userData">
+  <div class="col-md-4">
+    <mat-card class="queue-card" id="{{userData._id}}">
+      <mat-card-header>
+        <mat-card-title>{{userData.name}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Current files:</p>
+        <ol>
+          <li *ngFor="let x of userData.queue">{{x}}</li>
+        </ol>
+
+        <p>Replace queue: <br> (add file name then press enter per file)</p>
+        <mat-form-field class="example-chip-list">
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let queue of updateArray" [selectable]="selectable"
+                      [removable]="removable" (removed)="remove(queue)">
+              {{queue.name}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Add new queue.."
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+        </mat-form-field>
+
+        <br />
+        <p>
+          <strong>Created at: </strong>{{userData.createdAt | date: 'medium' : 'PST'}}
+        </p>
+
+        <p>
+          <strong>Updated at: </strong>{{userData.updatedAt | date: 'medium' : 'PST'}}
+        </p>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="updateUser(userData._id, $event)" mat-raised-button color="accent">Update</button>
+        <button (click)="deleteData(userData._id)" mat-raised-button color="warn">Delete Queue</button>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+</div>

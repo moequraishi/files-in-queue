@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { UserNewComponent } from './user-new/user-new.component';
 import { GetDataComponent } from './get-data/get-data.component';
 import { UpdateDataComponent } from './update-data/update-data.component';
+import { UserComponent } from './user/user.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:1337', options: {} };
 
@@ -25,7 +26,8 @@ const config: SocketIoConfig = { url: 'http://localhost:1337', options: {} };
     AppComponent,
     UserNewComponent,
     GetDataComponent,
-    UpdateDataComponent
+    UpdateDataComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,54 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <form #myForm="ngForm" action="/new" method="post">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input [(ngModel)]="name" name="name" class="form-control" id="name" type="text">
-        </div>
+<!--<div class="container">-->
+  <!--<div class="row">-->
+    <!--<div class="col-12">-->
+      <!--<form #myForm="ngForm" action="/new" method="post">-->
+        <!--<div class="form-group">-->
+          <!--<label for="name">Name:</label>-->
+          <!--<input [(ngModel)]="name" name="name" class="form-control" id="name" type="text">-->
+        <!--</div>-->
 
-        <div class="form-group queue-group">
-          <label for="queue">Queue</label>
-          <input [(ngModel)]="queue" name="queue" class="form-control" id="queue" type="text">
-        </div>
+        <!--<div class="form-group queue-group">-->
+          <!--<label for="queue">Queue</label>-->
+          <!--<input [(ngModel)]="queue" name="queue" class="form-control" id="queue" type="text">-->
+        <!--</div>-->
 
-        <button (click)="newData(myForm)" class="btn btn-success">Create</button>
-      </form>
-    </div>
+        <!--<button (click)="newData(myForm)" class="btn btn-success">Create</button>-->
+      <!--</form>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div class="row">
+  <div class="col-12">
+    <mat-card class="queue-card">
+      <mat-card-header>
+        <mat-card-title>Add New Queue</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input [(ngModel)]="name" matInput placeholder="Enter your name..">
+        </mat-form-field>
+
+        <p>Add files to queue: <br> (add file name then press enter per file)</p>
+        <mat-form-field class="example-chip-list">
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let queue of queueArray" [selectable]="selectable"
+                      [removable]="removable" (removed)="remove(queue)">
+              {{queue.name}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Add new queue.."
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+        </mat-form-field>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="newData(myForm)" mat-raised-button color="primary">Create</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>

@@ -21,6 +21,10 @@ export class HttpService {
     return this.http.get('/users');
   }
 
+  findOne(id) {
+    return this.http.get('/users/' + id);
+  }
+
   updateData(id, data) {
     return this.http.post('/update/' + id, data);
   }
