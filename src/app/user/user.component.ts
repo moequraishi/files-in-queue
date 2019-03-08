@@ -33,11 +33,15 @@ export class UserComponent implements OnInit {
 
   getOne() {
     const id = this.activeRoute.snapshot.params.id;
-    console.log(id);
     const observable = this.httpService.findOne(id);
     observable.subscribe(data => {
       this.userData = data;
-      console.log('Results from Mongo:', this.userData);
+
+      if (this.userData.queue.length) {
+        for (let i = 0; i < this.userData.queue.length; i++) {
+          this.updateArray.push({name: this.userData.queue[i]});
+        }
+      }
     });
   }
 
@@ -46,13 +50,9 @@ export class UserComponent implements OnInit {
     // const queue = event.path[2].childNodes[1].childNodes[3].value.toString().split(', ');
     const tempQue = [];
 
-    console.log(this.updateArray);
-
     for (let i = 0; i < this.updateArray.length; i++) {
       tempQue.push(this.updateArray[i].name);
     }
-
-    console.log(tempQue);
 
     const data = {
       name: this.userData.name,
@@ -62,7 +62,7 @@ export class UserComponent implements OnInit {
 
     const ob = this.httpService.updateData(id, data);
     ob.subscribe(res => {
-      console.log('Success!', res);
+      console.log('Successfully updated the queue!');
       this.update = false;
 
       this.route.navigate(['get']);
