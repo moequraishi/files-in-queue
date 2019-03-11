@@ -1,8 +1,9 @@
-const express = require('express'),
-  Test = require('../models/dummy'),
-  path = require('path'),
-  socketController = require('../controller/socket-controller'),
-  socket_routes = express.Router();
+const express = require('express');
+const Test = require('../models/dummy');
+const path = require('path');
+const socketController = require('../controller/socket-controller');
+
+const socket_routes = express.Router();
 
 socket_routes.get('/all', socketController.getAll);
 socket_routes.get('/users', socketController.getData);
