@@ -21,12 +21,13 @@ export class UserNewComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  constructor(private httpService: HttpService, private router: Router, private zone: NgZone) { }
+  constructor(private httpService: HttpService,
+              private router: Router,
+              private zone: NgZone) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  newData(form: NgForm) {
+  newData() {
     const tempArr = [];
 
     for (let i = 0; i < this.queueArray.length; i++) {

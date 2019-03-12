@@ -54,7 +54,7 @@ export class GetDataComponent implements OnInit, OnDestroy {
     const observable = this.httpService.getAll();
     observable.subscribe(data => {
       this.allData = data;
-      console.log('Results from Mongo:', this.allData);
+      // console.log('Results from Mongo:', this.allData);
     });
   }
 

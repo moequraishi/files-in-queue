@@ -16,15 +16,15 @@
           <li *ngFor="let x of userData.queue">{{x}}</li>
         </ol>
 
-        <p>Replace queue: <br> (add file name then press enter per file)</p>
-        <mat-form-field class="example-chip-list">
-          <mat-chip-list #chipList>
+        <p>Update queue: <br> (add file name then press enter per file)</p>
+        <mat-form-field class="selected-chip-list">
+          <mat-chip-list #chipList *ngIf="updateArray">
             <mat-chip *ngFor="let queue of updateArray" [selectable]="selectable"
                       [removable]="removable" (removed)="remove(queue)">
-              {{queue.name}}
+              {{queue.name}} 
               <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
             </mat-chip>
-            <input placeholder="Add new queue.."
+            <input placeholder="Update your queue.."
                    [matChipInputFor]="chipList"
                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                    [matChipInputAddOnBlur]="addOnBlur"
