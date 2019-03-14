@@ -1,13 +1,15 @@
 {
   "name": "inqueue-app",
   "version": "0.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron": "ng build --base-href ./ && electron ."
   },
   "private": true,
   "dependencies": {
@@ -47,6 +49,7 @@
     "@types/node": "~10.12.2",
     "@types/socket.io-client": "^1.4.32",
     "codelyzer": "~4.5.0",
+    "electron": "^4.1.0",
     "jasmine-core": "~3.3.0",
     "jasmine-spec-reporter": "~4.2.1",
     "jquery": "^3.3.1",
