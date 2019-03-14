@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+const uri = 'mongodb+srv://moe:mlGm3IqHSibpbd55@cluster0-lunk7.azure.mongodb.net/test?retryWrites=true';
+const localUri = 'mongodb://localhost/inqueue-app';
 
-mongoose.connect('mongodb://localhost/inqueue-app', { useNewUrlParser: true })
+mongoose.connect(uri, { useNewUrlParser: true })
   .then(() => {
     console.log('MongoDB Connected!');
   }).catch((err) => {

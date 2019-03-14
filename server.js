@@ -7,11 +7,11 @@ const app = express();
 const port = 1337;
 
 app.set('dist', path.join(__dirname, 'dist/inqueue'));
-app.use(express.static(path.join(__dirname, 'dist/inqueue')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(routes);
+app.use(bodyParser.urlencoded( {extended: false} ));
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'dist/inqueue')));
+app.use(routes);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/inqueue/index.html'));
