@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const routes = require('./server/routes/routes');
 const app = express();
-const port = 1337;
+const port = 5000;
 
 app.set('dist', path.join(__dirname, 'dist/inqueue'));
 app.use(bodyParser.json());
@@ -17,6 +17,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/inqueue/index.html'));
 });
 
-app.listen(port, () => {
-  console.log(`Listening on port: ${port}`);
+app.listen(process.env.PORT || port, () => {
+  console.log(`Listening on port: ${process.env.PORT || port}`);
 });

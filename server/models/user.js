@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const uri = 'mongodb://moe:Allheart123@ds231588.mlab.com:31588/heroku_q3hqxljh';
-const localUri = 'mongodb://localhost/inqueue-app';
+const local = 'mongodb://localhost/inqueue-app';
 
-mongoose.connect(uri, { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI || local, { useNewUrlParser: true })
   .then(() => {
     console.log('MongoDB Connected!');
   }).catch((err) => {
